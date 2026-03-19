@@ -1,0 +1,34 @@
+{% extends 'base_master.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    <img src="{% static 'planner/img/ffp.png' %}" alt="rmp" width="200">
+    <p class="col-lg-8 mx-auto fs-5 text-muted">
+      If you love meal planning and staying organized, Fuel Flow Pro to Eat was created for you!
+    </p>
+    {% if not request.user.is_authenticated %}
+    <div class="d-inline-flex gap-2 mb-5">
+      <button 
+        class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" 
+        type="button" 
+        onclick="window.location.href='{% url 'account_signup' %}'"
+      >
+        Get Started
+      </button>
+    </div>
+    {% else %}
+    <div class="d-inline-flex gap-2 mb-5">
+      <button 
+        class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" 
+        type="button" 
+        onclick="window.location.href='{% url 'payment:donate' %}'"
+      >
+      Support Us
+      </button>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
